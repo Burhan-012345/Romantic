@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>For You ❤️</title>
+    <meta
+      name="description"
+      content="A heartfelt romantic interactive experience"
+    />
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Updated font links -->
     <link
       href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -18,72 +21,239 @@
     />
   </head>
   <body>
-    <!-- Background Music -->
-    <audio id="background-music" loop>
-      <source src="audio/soft-music.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="screen active">
+      <div class="center-container">
+        <div class="loading-content">
+          <div class="heart-loader">
+            <i class="fas fa-heart"></i>
+          </div>
+          <p class="loading-text">Loading magical moments...</p>
+        </div>
+      </div>
+    </div>
 
-    <!-- Floating Hearts Container -->
-    <div id="floating-hearts"></div>
+    <!-- Name Input Screen -->
+    <div id="name-screen" class="screen">
+      <div class="center-container">
+        <div class="name-container">
+          <div class="glow-effect"></div>
+          <div class="name-content">
+            <h1 class="name-title">Before we begin...</h1>
+            <p class="name-subtitle">What should I call you?</p>
 
-    <!-- Main Container - Everything centered -->
-    <div class="main-wrapper">
-      <!-- Intro Screen -->
-      <div id="intro-screen" class="screen active">
-        <div class="center-container">
-          <div class="content">
-            <h1 id="intro-text-1" class="intro-text">
-              I want to say something to you
-            </h1>
-            <p id="intro-text-2" class="intro-text hidden">
-              Just listen for a moment
-            </p>
+            <div class="name-input-group">
+              <input
+                type="text"
+                id="user-name-input"
+                class="name-input"
+                placeholder="Enter your name"
+                maxlength="20"
+                autocomplete="off"
+              />
+              <div class="input-underline"></div>
+            </div>
 
-            <button id="open-btn" class="open-btn hidden">
+            <p class="name-hint">This will make everything more personal ❤️</p>
+
+            <button id="confirm-name-btn" class="name-confirm-btn">
               <i class="fas fa-heart"></i>
-              <span>Open it</span>
+              <span>Continue</span>
               <i class="fas fa-heart"></i>
             </button>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Message Screen -->
-      <div id="message-screen" class="screen">
-        <div class="center-container">
-          <div class="message-container">
-            <!-- Glow Effect -->
-            <div class="glow-effect"></div>
+    <!-- Intro Screen -->
+    <div id="intro-screen" class="screen">
+      <div class="center-container">
+        <div class="content">
+          <h1 id="intro-text-1" class="intro-text">
+            I want to say something to you
+          </h1>
+          <p id="intro-text-2" class="intro-text hidden"></p>
 
-            <!-- Message Content -->
-            <div class="message-content">
-              <h2 id="current-message" class="message-text"></h2>
-
-              <!-- Progress Dots -->
-              <div class="progress-dots" id="progress-dots"></div>
-            </div>
-          </div>
+          <button id="open-btn" class="open-btn hidden">
+            <i class="fas fa-heart"></i>
+            <span>Open it</span>
+            <i class="fas fa-heart"></i>
+          </button>
         </div>
       </div>
+    </div>
 
-      <!-- GIF Screen -->
-      <div id="gif-screen" class="screen">
-        <div class="center-container">
-          <div class="gif-container">
-            <!-- Local GIF File -->
-            <img
-              src="love.gif"
-              alt="Romantic GIF"
-              id="romantic-gif"
-              class="romantic-gif"
-            />
+    <!-- Message Screen -->
+    <div id="message-screen" class="screen">
+      <div class="center-container">
+        <div class="message-container">
+          <div class="glow-effect"></div>
 
-            <p class="gif-caption">Forever Yours ❤️</p>
+          <div class="message-header">
+            <span class="message-category" id="message-category"></span>
+            <span class="message-count" id="message-count"></span>
+          </div>
+
+          <div class="message-content">
+            <h2 id="current-message" class="message-text"></h2>
+
+            <div class="progress-dots" id="progress-dots"></div>
+          </div>
+
+          <div class="navigation-hint">
+            <i class="fas fa-chevron-left"></i>
+            <span>Click dots to navigate</span>
+            <i class="fas fa-chevron-right"></i>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Secret Message Screen (Easter Egg) -->
+    <div id="secret-screen" class="screen">
+      <div class="center-container">
+        <div class="secret-container">
+          <div class="secret-glow"></div>
+          <div class="secret-content">
+            <h1 class="secret-title">
+              <i class="fas fa-star"></i>
+              Secret Found!
+              <i class="fas fa-star"></i>
+            </h1>
+            <p class="secret-message" id="secret-message"></p>
+            <div class="secret-hearts">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-heart"></i>
+            </div>
+            <button id="secret-continue-btn" class="secret-btn">
+              Continue Journey
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final Question Screen -->
+    <div id="question-screen" class="screen">
+      <div class="center-container">
+        <div class="question-container">
+          <div class="question-glow"></div>
+
+          <div class="question-content">
+            <h1 class="question-text" id="question-text"></h1>
+
+            <div class="question-buttons">
+              <button id="yes-btn" class="yes-btn">
+                <i class="fas fa-heart"></i>
+                YES
+                <i class="fas fa-heart"></i>
+              </button>
+              <button id="no-btn" class="no-btn">
+                <i class="fas fa-times"></i>
+                NO
+              </button>
+            </div>
+
+            <div class="fireworks-container" id="fireworks"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GIF Screen -->
+    <div id="gif-screen" class="screen">
+      <div class="center-container">
+        <div class="gif-container">
+          <img
+            src="love.gif"
+            alt="Romantic GIF"
+            id="romantic-gif"
+            class="romantic-gif"
+          />
+          <p class="gif-caption" id="final-caption"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Letter Screen -->
+    <div id="letter-screen" class="screen">
+      <div class="center-container">
+        <div class="letter-container">
+          <div class="letter-paper">
+            <div class="letter-header">
+              <h2 class="letter-title">
+                My Dearest <span id="letter-name"></span>,
+              </h2>
+              <div class="letter-date" id="letter-date"></div>
+            </div>
+
+            <div class="letter-content">
+              <p id="letter-text-1"></p>
+              <p id="letter-text-2"></p>
+              <p id="letter-text-3"></p>
+            </div>
+
+            <div class="letter-footer">
+              <div class="signature">
+                <p class="signature-line">Forever yours,</p>
+                <p class="signature-name">With all my love ❤️</p>
+              </div>
+              <div class="letter-seal">
+                <i class="fas fa-heart"></i>
+              </div>
+            </div>
+          </div>
+
+          <button id="restart-btn" class="restart-btn">
+            <i class="fas fa-redo"></i>
+            Experience Again
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accessibility Controls -->
+    <div class="accessibility-controls">
+      <button
+        id="reduce-motion-btn"
+        class="accessibility-btn"
+        aria-label="Reduce motion"
+      >
+        <i class="fas fa-running"></i>
+      </button>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+      <span id="toast-message"></span>
+    </div>
+
+    <!-- Background Elements -->
+    <div id="floating-hearts"></div>
+    <div id="click-hearts-container"></div>
+    <canvas id="fireworks-canvas"></canvas>
+
+    <!-- Audio Elements -->
+    <audio id="background-music" loop preload="auto">
+      <source src="audio/soft-music.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <audio id="click-sound" preload="auto">
+      <source
+        src="https://assets.mixkit.co/sfx/preview/mixkit-unlock-game-notification-253.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+
+    <audio id="typewriter-sound" preload="auto">
+      <source
+        src="https://assets.mixkit.co/sfx/preview/mixkit-typewriter-soft-click-1110.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
 
     <script src="script.js"></script>
   </body>
