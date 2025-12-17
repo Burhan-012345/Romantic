@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For You ❤️</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Updated font links -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Background Music -->
+    <audio id="background-music" loop>
+      <source src="audio/soft-music.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- Floating Hearts Container -->
+    <div id="floating-hearts"></div>
+
+    <!-- Main Container - Everything centered -->
+    <div class="main-wrapper">
+      <!-- Intro Screen -->
+      <div id="intro-screen" class="screen active">
+        <div class="center-container">
+          <div class="content">
+            <h1 id="intro-text-1" class="intro-text">
+              I want to say something to you
+            </h1>
+            <p id="intro-text-2" class="intro-text hidden">
+              Just listen for a moment
+            </p>
+
+            <button id="open-btn" class="open-btn hidden">
+              <i class="fas fa-heart"></i>
+              <span>Open it</span>
+              <i class="fas fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Message Screen -->
+      <div id="message-screen" class="screen">
+        <div class="center-container">
+          <div class="message-container">
+            <!-- Glow Effect -->
+            <div class="glow-effect"></div>
+
+            <!-- Message Content -->
+            <div class="message-content">
+              <h2 id="current-message" class="message-text"></h2>
+
+              <!-- Progress Dots -->
+              <div class="progress-dots" id="progress-dots"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GIF Screen -->
+      <div id="gif-screen" class="screen">
+        <div class="center-container">
+          <div class="gif-container">
+            <!-- Local GIF File -->
+            <img
+              src="love.gif"
+              alt="Romantic GIF"
+              id="romantic-gif"
+              class="romantic-gif"
+            />
+
+            <p class="gif-caption">Forever Yours ❤️</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
